@@ -45,7 +45,11 @@ body {
   scroll-behavior: smooth;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }
 
 .logo {
@@ -91,7 +95,6 @@ body {
     font-family: var(--font-logo);
     font-weight: 900;
     font-size: 80px;
-    /* min-width: 1150px; */
     text-align: center;
     margin: 32px 0;
     text-transform: uppercase;
@@ -188,13 +191,6 @@ body {
     @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
-/* @utility text-gradient {
-    background: linear-gradient(to bottom, #ffffff, #898989);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-} */
-
 
 @utility masked-img {
     mask-image: url("/images/mask-img.png");
@@ -284,8 +280,6 @@ body {
         .video-wrapper {
             @apply absolute inset-0 z-0;
         }
-
-
         .left {
             @apply absolute left-0 md:top-20 xl:top-36 2xl:top-52 md:bottom-auto -bottom-20 md:w-fit w-1/3;
         }
@@ -335,34 +329,7 @@ body {
             @apply absolute inset-0 w-full h-full z-10;
         }
     }
+    
 
 }
-.hero-video {
-  /* position: fixed; */
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100dvh;
-  z-index: 0;
-  overflow: hidden;
-  /* background-color: black; */
-}
 
-.hero-video video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  background-color: black;
-}
-
-/* ✅ iOS fix */
-@supports (-webkit-touch-callout: none) {
-  .hero-video {
-    height: -webkit-fill-available;
-  }
-  .hero-video video {
-    height: -webkit-fill-available;
-    object-fit: cover !important;
-  }
-}

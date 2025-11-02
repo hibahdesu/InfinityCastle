@@ -15,12 +15,13 @@ const Navbar = () => {
   useLayoutEffect(() => {
     ScrollTrigger.getAll().forEach((t) => t.kill());
 
-    if (location.pathname === "/") {
+    const eligiblePaths = ["/", "/analysis"];
+    if (eligiblePaths.includes(location.pathname)) {
       const ctx = gsap.context(() => {
         gsap.timeline({
           scrollTrigger: {
-            trigger: navRef.current,
-            start: "bottom top",
+            trigger: document.body, // fallback trigger for fixed nav
+            start: "100 top",
             scrub: true,
           },
         }).fromTo(
@@ -43,9 +44,7 @@ const Navbar = () => {
       ref={navRef}
       className="fixed top-0 left-0 w-full z-50 text-white bg-transparent transition-all duration-500"
     >
-      {/* ✅ Flex container to keep logo & menu in one row */}
       <div className="flex items-center justify-between w-full px-6 py-4 max-w-7xl mx-auto">
-        {/* Logo Section */}
         <Link to="/" className="flex items-center gap-2 shrink-0">
           <img
             src="/images/logo.png"
@@ -54,7 +53,6 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop Links */}
         <ul className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <li key={link.id}>
@@ -74,7 +72,6 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Mobile Hamburger Button */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle Menu"
@@ -98,9 +95,8 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
       <div
-        className={`fixed md:hidden top-0 left-0 w-full h-screen bg-black/90 backdrop-blur-md flex flex-col items-center justify-center gap-8 text-xl font-semibold transform transition-all duration-500 ${
+        className={`fixed md:hidden top-0 left-0 w-full h-screen bg-black/80 backdrop-blur-md flex flex-col items-center justify-center gap-8 text-xl font-semibold transform transition-all duration-500 ${
           menuOpen
             ? "translate-y-0 opacity-100 pointer-events-auto"
             : "-translate-y-full opacity-0 pointer-events-none"
