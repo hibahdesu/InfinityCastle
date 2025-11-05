@@ -49,6 +49,9 @@ You can deploy this project for free using:
 
 Coming soon — cinematic stills and dashboard previews.
 
+## 🎥 Demo Video:
+🎥 [Watch the Demon Slayer Demo Video](https://youtu.be/BlMUOaVkj2g?si=AV6RMHLJmrSfDt_X)
+
 ## 📜 License
 
 - [Domestic Box Office](https://www.boxofficemojo.com/month/september/2025/?grossesOption=calendarGrosses)
